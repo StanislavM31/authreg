@@ -9,11 +9,21 @@ body {
     align-items: center;
     height: 100vh;
 }
+.container {
+    margin: 20px;
+    padding: 20px;
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
 form {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+h3 {
+    text-align: center;
+  }
 label {
     margin-bottom: 10px;
     font-size: 20px;
@@ -21,11 +31,13 @@ label {
     font-family: Arial, sans-serif;
 }
 input[type="text"],
-textarea {
+input[type="password"] {
     width: 300px;
     padding: 10px;
     font-size: 18px;
     font-family: Arial, sans-serif;
+    border-radius: 5px;
+    border: 1px solid #ccc;
 }
 a {
     color: #7c9ab7;
@@ -33,7 +45,9 @@ a {
     text-decoration: none;
 }
 p {
-    margin:10 0;
+    margin: 10px 0;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
 }
 button {
     cursor: pointer;

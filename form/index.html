@@ -2,18 +2,22 @@
 <html>
 <head>
     <title>Форма ввода</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./style.css">
     <meta charset="UTF-8">
 </head>
 <body>
-    <form method="post" action="auth.php">
-        <label for="input1">Логин</label>
-        <input type="text" id="login" name="login" placeholder="Логин"><br>
-
-        <label for="input2">Email</label>
-        <input type="text" id="email" name="email" placeholder="Email"><br>
-
-        <button type="submit">Отправить</button>
-    </form>
+    <div class="container">
+        <h3>авторизация</h3>
+        <form method="post" action="login_process.php">
+            <label for="login">Логин</label>
+            <input type="text" id="login" name="login" placeholder="Логин" required><br>
+            
+            <label for="password">Пароль</label>
+            <input type="text" id="password" name="password" placeholder="Пароль" required><br>
+            
+            <button type="submit">Войти</button>
+        </form>
+        <p>Еще не зарегистрированы? <a href="./registration/registration.php">Зарегистрироваться</a></p>
+    </div>
 </body>
 </html>
