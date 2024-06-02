@@ -1,10 +1,13 @@
 <?php
-require __DIR__ . '/auth.php';
-$login = getUserLogin();
-$username = $_COOKIE['username'];
-$password = $_COOKIE['password'];
-    echo 'cookie username: ' . $username;
-    echo 'cookie password: ' . $password;
+$username = isset($_COOKIE['username']) ? $_COOKIE['username'] : null;
+$password = isset($_COOKIE['password']) ? $_COOKIE['password'] : null;
+
+if ($username !== null || $password !== null) { // &&
+    echo 'Cookie username: ' . $username;
+    echo 'Cookie password: ' . $password;
+} else {
+    echo 'Куки username или password отсутствуют.';
+}
 ?>
 
 <html>
@@ -15,7 +18,7 @@ $password = $_COOKIE['password'];
 </head>
 <body>
     <?php
-        if($username !==null ):
+        if($username !==null ) :
     ?> Добро пожаловать, <?=$username?>
     <form method="post" action="logout_process.php">
         <button type="submit" formaction="logout_process.php">Разлогиниться</button>

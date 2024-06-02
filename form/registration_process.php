@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $_SESSION['username'] = $user['login'];
     setcookie('username', $user['login'], time() + 30);
 
-    header('Location: profile.php');
+    header('Location: index.php');
     exit();
 }
 ?>

@@ -3,5 +3,10 @@
         "login": "stanislavm31",
         "password": "123",
         "email": "minkostas@gmail.com"
+    },
+    {
+        "login": "12",
+        "password": "12",
+        "email": "12@gmail.com"
     }
 ]
