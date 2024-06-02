@@ -27,3 +27,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit();
 }
 ?>
+<?php
+    class Registration {
+        private $username;
+        private $password;
+
+        public function __construct($username, $password){
+            $this->username = $username;
+            $this->password = $password;
+        }
+    }
+    
+    
+?>
