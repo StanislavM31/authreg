@@ -6,9 +6,10 @@
     <meta charset="UTF-8">
 </head>
 <body>
+<body>
     <div class="container">
         <h3>Регистрация</h3>
-        <form method="post" action="registration_process.php">
+        <form id="registrationForm" method="post">
             <label for="login">Логин</label>
             <input type="text" id="login" name="login" placeholder="Логин" required><br>
             
@@ -27,5 +28,35 @@
             <a href="index.php">Войти</a>
         </p>
     </div>
+    <script>
+        document.getElementById("registrationForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            let formData = new FormData(this);
+            
+            fetch("_process.php", {
+                method: "POST",
+                body: formData
+            })
+            .then(function(response) {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error("Ошибка при регистрации");
+                }
+            })
+            .then(function(data) {
+                if (data.status === "success") {
+                    console.log(data.message);
+                    window.location.href = "index.php";
+                } else {
+                    console.error(data.message);
+                }
+            })
+            .catch(function(error) {
+                console.error(error);
+            });
+        });
+    </script>
 </body>
 </html>

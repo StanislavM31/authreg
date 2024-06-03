@@ -1,5 +1,4 @@
 <?php
-
 require_once __DIR__ . '/classes/Registration.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -13,14 +12,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($registrationResult === true) {
         session_start();
-        session_set_cookie_params(30);
         $_SESSION['username'] = $username;
         setcookie('username', $username, time() + 30);
-
-        header('Location: index.php');
-        exit();
+        $response = array("status" => "success", "message" => "Регистрация успешна");
     } else {
-        echo $registrationResult;
+        $response = array("status" => "error", "message" => $registrationResult);
     }
+
+    header('Content-Type: application/json');
+    echo json_encode($response);
 }
 ?>
