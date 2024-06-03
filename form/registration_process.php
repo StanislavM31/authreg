@@ -1,42 +1,24 @@
-<!-- регистрация -->
 <?php
-session_start();
+
+require_once __DIR__ . '/classes/Registration.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $input1 = $_POST['login'];
-    $input2 = $_POST['password'];
-    $input3 = $_POST['email'];
+    $username = $_POST['login'];
+    $password = $_POST['password'];
+    $confirmPassword = $_POST['confirm_password'];
+    $email = $_POST['email'];
 
-    $user = array(
-        'login' => $input1,
-        'password' => $input2 ,
-        'email' => $input3,
-    );
+    $registration = new Registration($username, $password, $confirmPassword, $email);
+    $registrationResult = $registration->register();
 
-    $data = file_get_contents('db.json');
-    $users = json_decode($data, true);
-    
-    $users[] = $user;
-
-    file_put_contents('db.json', json_encode($users, JSON_PRETTY_PRINT));
-
-    $_SESSION['username'] = $user['login'];
-    setcookie('username', $user['login'], time() + 30);
-
-    header('Location: index.php');
-    exit();
-}
-?>
-<?php
-    class Registration {
-        private $username;
-        private $password;
-
-        public function __construct($username, $password){
-            $this->username = $username;
-            $this->password = $password;
-        }
+    if ($registrationResult === true) {
+        session_start();
+        $_SESSION['username'] = $username;
+        setcookie('username', $username, time() + 30);
+        header('Location: index.php');
+        exit();
+    } else {
+        echo $registrationResult;
     }
-    
-    
+}
 ?>

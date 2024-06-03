@@ -1,9 +1,13 @@
 <?php
-require_once __DIR__ . '/classes/Auth.php';
-require_once __DIR__ . '/classes/CookieHandler.php';
+$username = isset($_COOKIE['username']) ? $_COOKIE['username'] : null;
+$password = isset($_COOKIE['password']) ? $_COOKIE['password'] : null;
 
-$auth = new Auth();
-$cookieHandler = new CookieHandler();
+if ($username !== null || $password !== null) { // &&
+    echo 'Cookie username: ' . $username;
+    echo 'Cookie password: ' . $password;
+} else {
+    echo 'Куки username или password отсутствуют.';
+}
 ?>
 
 <html>
@@ -15,12 +19,12 @@ $cookieHandler = new CookieHandler();
 </head>
 
 <body>
-    <?php $cookieHandler->displayCookies(); ?>
-<?php if ($cookieHandler->getUsername() !== null) : ?>
-    Добро пожаловать, <?= $cookieHandler->getUsername() ?>
-    <form method="post" action="logout_process.php">
-        <button type="submit">Разлогиниться</button>
-    </form>
+    <?php
+    if ($username !== null) :
+    ?> Добро пожаловать, <?= $username ?>
+        <form method="post" action="logout_process.php">
+           <button type="submit">Разлогиниться</button>
+        </form>
     <?php else : ?>
         <div class="container">
             <h3>Авторизуйтесь</h3>

@@ -5,8 +5,18 @@
         "email": "minkostas@gmail.com"
     },
     {
-        "login": "12",
-        "password": "12",
+        "username": "2222",
+        "password": "$2y$10$mzuk82yGFOIzwOY7LbkPCuy1oapsfjXlmDmTczsUObplpvrOVRKlK",
+        "email": "2222@gmail.com"
+    },
+    {
+        "username": "33",
+        "password": "33",
         "email": "12@gmail.com"
+    },
+    {
+        "username": "1234",
+        "password": "11",
+        "email": "333@gmail.com"
     }
 ]
