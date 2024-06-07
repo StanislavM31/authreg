@@ -1,13 +1,13 @@
 <?php
 
 class Registration {
-    private $username;
+    private $login;
     private $password;
     private $confirmPassword;
     private $email;
     
-    public function __construct($username, $password, $confirmPassword, $email) {
-        $this->username = $username;
+    public function __construct($login, $password, $confirmPassword, $email) {
+        $this->login = $login;
         $this->password = $password;
         $this->confirmPassword = $confirmPassword;
         $this->email = $email;
@@ -19,7 +19,7 @@ class Registration {
         }
 
         $user = [
-            'username' => $this->username,
+            'login' => $this->login,
             //'password' => $this->hashPassword($this->password),
             'password' => $this->password,
             'email' => $this->email

@@ -3,5 +3,60 @@
         "login": "stanislavm31",
         "password": "123",
         "email": "minkostas@gmail.com"
+    },
+    {
+        "login": "StanislavM31",
+        "password": "123",
+        "email": "minkostas@gmail.com"
+    },
+    {
+        "login": "qq",
+        "password": "qq",
+        "email": "qq@mail.ru"
+    },
+    {
+        "login": "qq",
+        "password": "qq",
+        "email": "qq@mail.ru"
+    },
+    {
+        "login": "www",
+        "password": "qqq",
+        "email": "qq@mail.ru"
+    },
+    {
+        "login": "admin",
+        "password": "123",
+        "email": "123@mail.ru"
+    },
+    {
+        "login": "rrr",
+        "password": "123",
+        "email": "ab@gmail.com"
+    },
+    {
+        "login": "admin",
+        "password": "123",
+        "email": "123@mail.ru"
+    },
+    {
+        "login": "123",
+        "password": "123",
+        "email": "123@mail.ru"
+    },
+    {
+        "login": "123",
+        "password": "123",
+        "email": "123@mail.ru"
+    },
+    {
+        "login": "123",
+        "password": "123",
+        "email": "123@mail.ru"
+    },
+    {
+        "login": "123",
+        "password": "123",
+        "email": "123@mail.ru"
     }
 ]

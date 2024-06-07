@@ -1,17 +1,17 @@
 <?php
 
 class CookieHandler {
-    private $username;
+    private $login;
     private $password;
 
     public function __construct() {
-        $this->username = isset($_COOKIE['username']) ? $_COOKIE['username'] : null;
+        $this->login = isset($_COOKIE['login']) ? $_COOKIE['login'] : null;
         $this->password = isset($_COOKIE['password']) ? $_COOKIE['password'] : null;
     }
 
     public function displayCookies() {
-        if ($this->username !== null || $this->password !== null) {
-            echo 'Cookie username: ' . $this->username . '<br>';
+        if ($this->login !== null || $this->password !== null) {
+            echo 'Cookie username: ' . $this->login . '<br>';
             echo 'Cookie password: ' . $this->password;
         } else {
             echo 'Куки username или password отсутствуют.';
@@ -19,7 +19,7 @@ class CookieHandler {
     }
 
     public function getUsername() {
-        return $this->username;
+        return $this->login;
     }
 }
 ?>

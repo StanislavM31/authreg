@@ -10,14 +10,14 @@ class Auth
         $this->users = json_decode($data, true);
     }
 
-    public function login($username, $password)
+    public function login($login, $password)
     {
         session_start();
 
         foreach ($this->users as $user) {
-            if ($user['login'] === $username && $user['password'] === $password) {
-                $_SESSION['username'] = $user['login'];
-                setcookie('username', $user['login'], time() + 30);
+            if ($user['login'] === $login && $user['password'] === $password) {
+                $_SESSION['login'] = $user['login'];
+                setcookie('login', $user['login'], time() + 30);
                 return true;
             }
         }
@@ -27,13 +27,13 @@ class Auth
 
     public function logout()
     {
-        unset($_SESSION['username']);
-        setcookie('username', '', time() - 3600);
+        unset($_SESSION['login']);
+        setcookie('login', '', time() - 3600);
     }
 
     public function isLoggedIn()
     {
-        if (isset($_SESSION['username'])) {
+        if (isset($_SESSION['login'])) {
             return true;
         } else {
             return false;

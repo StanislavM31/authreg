@@ -1,26 +1,27 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $input1 = $_POST['login'];
-    $input2 = $_POST['password'];
+    $login = $_POST['login'];
+    $password = $_POST['password'];
 
     $data = file_get_contents('db.json');
     $users = json_decode($data, true);
 
     $user = null;
+
     foreach ($users as $userData) {
-        if ($userData['login'] === $input1 && $userData['password'] === $input2) {
+        if ($userData['login'] === $login && $userData['password'] === $password) {
             $user = $userData;
             break;
         }
     }
 
-    if ($user) {
+    
 
+    if ($user) {
         session_start();
 
-        $_SESSION['username'] = $user['login'];
-        setcookie('username', $user['login'], time() + 300);
-        setcookie('password', $user['password'], time() + 300);
+        $_SESSION['login'] = $user['login'];
+        setcookie('login', $user['login'], time() + 30);
         header('Location: index.php');
         exit();
     } else {
@@ -29,3 +30,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo '<a href="index.php">Попробовать еще раз</a>';
     }
 }
+?>
