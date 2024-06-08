@@ -26,7 +26,7 @@ $cookieHandler = new CookieHandler();
     <?php else : ?>
         <div class="container">
             <h3>Авторизуйтесь</h3>
-            <form method="post" action="login_process.php">
+            <form id="authForm" method="post" >
                 <label for="login">Логин</label>
                 <input type="text" id="login" name="login" placeholder="Логин" required><br>
 
@@ -36,11 +36,11 @@ $cookieHandler = new CookieHandler();
                 <button type="submit">Войти</button>
             </form>
             <p>Еще не зарегистрированы?
-                <a href="registration.php">Зарегистрироваться</a>
+                <a href="registration_form.php">Зарегистрироваться</a>
             </p>
         </div>
     <?php endif; ?>
-
+    <script src="./scripts/auth.js"></script>
 </body>
 
 </html>

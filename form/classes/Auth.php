@@ -13,11 +13,16 @@ class Auth
     public function login($login, $password)
     {
         session_start();
-
+        $sessionId = session_id();
         foreach ($this->users as $user) {
             if ($user['login'] === $login && $user['password'] === $password) {
                 $_SESSION['login'] = $user['login'];
-                setcookie('login', $user['login'], time() + 30);
+                setcookie('login', $user['login'], time() + 30, '/');
+                setcookie('password', $user['password'], time() + 30, '/');
+                setcookie('session_id', $sessionId, time() + 30, '/');
+                echo '==== <br>';
+                echo 'Cookie username: ' . $_SESSION['login'];
+            
                 return true;
             }
         }
