@@ -58,5 +58,150 @@
         "login": "123",
         "password": "123",
         "email": "123@mail.ru"
+    },
+    {
+        "login": "123",
+        "password": "123",
+        "email": "123@mail.ru"
+    },
+    {
+        "login": "123",
+        "password": "123",
+        "email": "123@mail.ru"
+    },
+    {
+        "login": "aaaaaaaaaaa",
+        "password": "aaaaaaaaaaaaaaaaa",
+        "email": "aa@mail.ru"
+    },
+    {
+        "login": "1",
+        "password": "1",
+        "email": "123@mail.ru"
+    },
+    {
+        "login": "1",
+        "password": "1",
+        "email": "123@mail.ru"
+    },
+    {
+        "login": "1",
+        "password": "1",
+        "email": "123@mail.ru"
+    },
+    {
+        "login": "1",
+        "password": "1",
+        "email": "123@mail.ru"
+    },
+    {
+        "login": "1",
+        "password": "1",
+        "email": "123@mail.ru"
+    },
+    {
+        "login": "1",
+        "password": "1",
+        "email": "123@mail.ru"
+    },
+    {
+        "login": "1",
+        "password": "1",
+        "email": "123@mail.ru"
+    },
+    {
+        "login": "1",
+        "password": "1",
+        "email": "123@mail.ru"
+    },
+    {
+        "login": "1",
+        "password": "1",
+        "email": "1@1"
+    },
+    {
+        "login": "1",
+        "password": "1",
+        "email": "1@1"
+    },
+    {
+        "login": "1",
+        "password": "1",
+        "email": "123@mail.ru"
+    },
+    {
+        "login": "1",
+        "password": "1",
+        "email": "123@mail.ru"
+    },
+    {
+        "login": "1",
+        "password": "1",
+        "email": "1@1"
+    },
+    {
+        "login": "1",
+        "password": "1",
+        "email": "1@1"
+    },
+    {
+        "login": "1",
+        "password": "1",
+        "email": "1@1"
+    },
+    {
+        "login": "1",
+        "password": "1",
+        "email": "1@1"
+    },
+    {
+        "login": "1",
+        "password": "1",
+        "email": "1@1"
+    },
+    {
+        "login": "1",
+        "password": "1",
+        "email": "1@1"
+    },
+    {
+        "login": "1",
+        "password": "1",
+        "email": "1@1"
+    },
+    {
+        "login": "admin",
+        "password": "q",
+        "email": "qq@mail.ru"
+    },
+    {
+        "login": "123",
+        "password": "123",
+        "email": "123@mail.ru"
+    },
+    {
+        "login": "admin",
+        "password": "123",
+        "email": "qq@mail.ru"
+    },
+    {
+        "login": "admin",
+        "password": "123",
+        "email": "123@mail.ru"
+    },
+    {
+        "login": "123",
+        "password": "123",
+        "email": "123@mail.ru"
+    },
+    {
+        "login": "1",
+        "password": "1",
+        "email": "123@mail.ru"
+    },
+    {
+        "login": "admin",
+        "password": "11",
+        "email": "qq@mail.ru"
     }
 ]

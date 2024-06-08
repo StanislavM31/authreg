@@ -48,7 +48,7 @@
             .then(function(data) {
                 if (data.status === "success") {
                     console.log(data.message);
-                    window.location.href = "index.php";
+                    window.location.replace("index.php");
                 } else {
                     console.error(data.message);
                 }

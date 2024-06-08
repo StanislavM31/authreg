@@ -1,11 +1,11 @@
 <?php
 
 class CookieHandler {
-    private $login;
-    private $password;
+    public $login;
+    public $password;
 
     public function __construct() {
-        $this->login = isset($_COOKIE['login']) ? $_COOKIE['login'] : null;
+        $this->login = isset($_COOKIE['username']) ? $_COOKIE['username'] : null;
         $this->password = isset($_COOKIE['password']) ? $_COOKIE['password'] : null;
     }
 
@@ -17,6 +17,7 @@ class CookieHandler {
             echo 'Куки username или password отсутствуют.';
         }
     }
+
 
     public function getUsername() {
         return $this->login;

@@ -1,4 +1,5 @@
 <?php
+var_dump($_COOKIE);
 require_once __DIR__ . '/classes/Auth.php';
 require_once __DIR__ . '/classes/CookieHandler.php';
 

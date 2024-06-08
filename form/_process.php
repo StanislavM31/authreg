@@ -15,11 +15,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['username'] = $username;
         setcookie('username', $username, time() + 30);
         $response = array("status" => "success", "message" => "Регистрация успешна");
+        /*  */
     } else {
         $response = array("status" => "error", "message" => $registrationResult);
     }
 
     header('Content-Type: application/json');
     echo json_encode($response);
+    
 }
 ?>
