@@ -17,6 +17,7 @@ $cookieHandler = new CookieHandler();
 
 <body>
     <?php $cookieHandler->displayCookies(); ?>
+    
 <?php if ($cookieHandler->getUsername() !== null) : ?>
     Добро пожаловать, <?= $cookieHandler->getUsername() ?>
     <form method="post" action="logout_process.php">

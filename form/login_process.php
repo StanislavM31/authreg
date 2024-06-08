@@ -21,7 +21,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         session_start();
 
         $_SESSION['login'] = $user['login'];
-        setcookie('login', $user['login'], time() + 30);
+        setcookie('login', $user['login'], time() + 45);
+
         header('Location: index.php');
         exit();
     } else {
