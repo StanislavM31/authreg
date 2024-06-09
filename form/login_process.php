@@ -21,13 +21,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             session_start();
 
             $_SESSION['login'] = $user['login'];
-            setcookie('login', $user['login'], time() + 45);
+            setcookie('login', $user['login'], time() + 30);
             setcookie('password', $user['password'], time() + 30);
-            setcookie('session_id', "test", time() + 30, '/');
-            echo '==== <br>';
+            setcookie('session_id', session_id(), time() + 30, '/');//айдисессии
             echo 'Cookie username: ' . $_SESSION['login'];
             header('Location: index.php');
-            exit();
+    /*         exit(); */
         } else {
             echo "Неверный логин или пароль";
             echo '<br>';

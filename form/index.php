@@ -3,7 +3,7 @@ var_dump($_COOKIE);
 require_once __DIR__ . '/classes/Auth.php';
 require_once __DIR__ . '/classes/CookieHandler.php';
 
-$auth = new Auth();
+
 $cookieHandler = new CookieHandler();
 ?>
 
@@ -20,6 +20,11 @@ $cookieHandler = new CookieHandler();
     
 <?php if ($cookieHandler->getUsername() !== null) : ?>
     Добро пожаловать, <?= $cookieHandler->getUsername() ?>
+    <ul>
+        <li><a href="./pages/harrypotter.php">Список книг</a></li>
+        <li><a href="./pages/harrypotter.php">Список книг</a></li>
+        <li><a href="./pages/harrypotter.php">Список книг</a></li>
+    </ul>
     <form method="post" action="logout_process.php">
         <button type="submit">Разлогиниться</button>
     </form>
