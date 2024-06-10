@@ -1,10 +1,11 @@
 <?php
-var_dump($_COOKIE);
+
 require_once __DIR__ . '/classes/Auth.php';
 require_once __DIR__ . '/classes/CookieHandler.php';
 
 
 $cookieHandler = new CookieHandler();
+
 ?>
 
 <html>
@@ -16,22 +17,36 @@ $cookieHandler = new CookieHandler();
 </head>
 
 <body>
-    <?php $cookieHandler->displayCookies(); ?>
-    
-<?php if ($cookieHandler->getUsername() !== null) : ?>
-    Добро пожаловать, <?= $cookieHandler->getUsername() ?>
-    <ul>
-        <li><a href="./pages/harrypotter.php">Список книг</a></li>
-        <li><a href="./pages/harrypotter.php">Список книг</a></li>
-        <li><a href="./pages/harrypotter.php">Список книг</a></li>
-    </ul>
-    <form method="post" action="logout_process.php">
-        <button type="submit">Разлогиниться</button>
-    </form>
+    <div class="container_info">
+        <div class="cookie_container">
+            <?php
+            var_dump($_COOKIE);
+            ?>
+        </div>
+        <div class="cookie_display">
+            <?php $cookieHandler->displayCookies(); ?>
+        </div>
+    </div>
+
+    <?php if ($cookieHandler->getUsername() !== null) : ?>
+        <div class="autorized">
+            <div class="autorized_user">
+                Добро пожаловать, <?= $cookieHandler->getUsername() ?>
+            </div>
+
+            <ul>
+                <li><a href="./pages/harrypotter.php">Список книг</a></li>
+                <li><a href="./pages/harrypotter.php">Список книг</a></li>
+                <li><a href="./pages/harrypotter.php">Список книг</a></li>
+            </ul>
+            <form method="post" action="logout_process.php">
+                <button type="submit">Разлогиниться</button>
+            </form>
+        </div>`
     <?php else : ?>
         <div class="container">
             <h3>Авторизуйтесь</h3>
-            <form id="authForm" method="post" >
+            <form id="authForm" method="post">
                 <label for="login">Логин</label>
                 <input type="text" id="login" name="login" placeholder="Логин" required><br>
 
