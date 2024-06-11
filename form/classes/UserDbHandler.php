@@ -35,20 +35,19 @@ class userDbHandler
 
     public function getAllUsers()
     {
-        // Логика чтения данных пользователей из файла db.json
-        // и возвращения массива с данными
+
         $userData = json_decode(file_get_contents($this->dbFilePath), true);
         return $userData;
     }
 
     public function createUser($userData)
     {
-        // Логика создания нового пользователя
+    
     }
 
     public function updateUser($userId, $userData)
     {
-        // Логика обновления данных пользователя
+
     }
 
     public function deleteUser($userId)
