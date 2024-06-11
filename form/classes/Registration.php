@@ -5,12 +5,14 @@ class Registration {
     private $password;
     private $confirmPassword;
     private $email;
+    private $session_id;
     
-    public function __construct($login, $password, $confirmPassword, $email) {
+    public function __construct($login, $password, $confirmPassword, $email, $session_id) {
         $this->login = $login;
         $this->password = $password;
         $this->confirmPassword = $confirmPassword;
         $this->email = $email;
+        $this->session_id = $session_id;
     }
     
     public function register() {
@@ -22,7 +24,8 @@ class Registration {
             'login' => $this->login,
             //'password' => $this->hashPassword($this->password),
             'password' => $this->password,
-            'email' => $this->email
+            'email' => $this->email,
+            'session_id' => $this->session_id
         ];
         
         $users = $this->getAllUsers();

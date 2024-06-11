@@ -12,9 +12,17 @@ document.getElementById("authForm").addEventListener("submit", function(event) {
     })
     .then(function(response) {
         if (response.ok) {
-            window.location.reload();
+            return response.json();
         } else {
-            console.error("Ошибка при отправке формы авторизации");
+            throw new Error("Ошибка при отправке формы авторизации");
+        }
+    })
+    .then(function(data) {
+        if (data.status === "success") {
+            console.log(data.message);
+            window.location.replace("index.php");
+        } else {
+            console.error(data.message);
         }
     })
     .catch(function(error) {

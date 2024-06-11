@@ -1,22 +1,50 @@
 [
     {
         "login": "stanislavm31",
-        "password": "123",
-        "email": "minkostas@gmail.com"
-    },
-    {
-        "login": "StanislavM31",
-        "password": "123",
-        "email": "minkostas@gmail.com"
-    },
-    {
-        "login": "admin",
-        "password": "123",
-        "email": "123@mail.ru"
+        "password": "1",
+        "email": "12@gmail.com",
+        "session_id": "e8qu56r7tl6glua5qtclte5bnp"
     },
     {
         "login": "stanislavm31",
         "password": "123",
-        "email": "123@mail.ru"
+        "email": "12@gmail.com",
+        "session_id": "e8qu56r7tl6glua5qtclte5bnp"
+    },
+    {
+        "login": "StanislavM31",
+        "password": "1",
+        "email": "12@gmail.com",
+        "session_id": "iu1fhabf1daij9n0jl1m7md4g7"
+    },
+    {
+        "login": "1",
+        "password": "1",
+        "email": "12@gmail.com",
+        "session_id": "v88gnl935dp29s5i2ssdqhl099"
+    },
+    {
+        "login": "2",
+        "password": "2",
+        "email": "2222@gmail.com",
+        "session_id": "pmhad4gfvf45m6vpigo1s5ude9"
+    },
+    {
+        "login": "aaa",
+        "password": "aaa",
+        "email": "12@gmail.com",
+        "session_id": "j5p3lrs812ausbj16cemu7dg5o"
+    },
+    {
+        "login": "stanislavm31",
+        "password": "123",
+        "email": "123@mail.ru",
+        "session_id": "h92tse6m70frgi89698psevjeh"
+    },
+    {
+        "login": "stanislavm31",
+        "password": "123",
+        "email": "123@mail.ru",
+        "session_id": "0pnl0c7639i15qevkpvf38e07v"
     }
 ]

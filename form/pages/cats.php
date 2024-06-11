@@ -23,17 +23,16 @@ $cookieHandler = new CookieHandler();
 
 <body>
     <a href='/'>На главную</a>
-    <h1>Harry Potter Book List</h1>
+    <h1>Виды кошек</h1>
 
-    <?php 
-    session_start();
+    <?php
     echo "Значение куки session_id: " . $_COOKIE['session_id'] . "<br>";
     echo "значение session_id(): " . (session_id()) . "<br>";
     echo "Проверка : " . (isset($_COOKIE['session_id']) == session_id()) . "<br>";
     ?>
 
     <?php
-    
+    session_start();
 
     echo "Текущий ID сессии: " . session_id();
     if ($_COOKIE['session_id'] == session_id()) {
@@ -41,13 +40,13 @@ $cookieHandler = new CookieHandler();
     ?>
         <div class="container">
             <ul>
-                <li>Harry Potter and the Philosopher's Stone</li>
-                <li>Harry Potter and the Chamber of Secrets</li>
-                <li>Harry Potter and the Prisoner of Azkaban</li>
-                <li>Harry Potter and the Goblet of Fire</li>
-                <li>Harry Potter and the Order of the Phoenix</li>
-                <li>Harry Potter and the Half-Blood Prince</li>
-                <li>Harry Potter and the Deathly Hallows</li>
+                <li>Maine Coon</li>
+                <li>Persian</li>
+                <li>Siamese</li>
+                <li>Bengal</li>
+                <li>Sphynx</li>
+                <li>Ragdoll</li>
+                <li>Scottish Fold</li>
             </ul>
         </div>
     <?php

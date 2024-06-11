@@ -1,6 +1,6 @@
 <?php
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest') {
         $login = $_POST['login'];
         $password = $_POST['password'];
@@ -23,18 +23,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['login'] = $user['login'];
             setcookie('login', $user['login'], time() + 30);
             setcookie('password', $user['password'], time() + 30);
-            setcookie('session_id', session_id(), time() + 30, '/');//айдисессии
-            echo 'Cookie username: ' . $_SESSION['login'];
-            header('Location: index.php');
-    /*         exit(); */
+            setcookie('session_id', session_id(), time() + 30, '/');
+
+            $response = array("status" => "success", "message" => "Авторизация успешна");
         } else {
-            echo "Неверный логин или пароль";
-            echo '<br>';
-            echo '<a href="index.php">Попробовать еще раз</a>';
+            $response = array("status" => "error", "message" => "Неверный логин или пароль");
         }
+
+        header('Content-Type: application/json');
+        echo json_encode($response);
     } else {
-        http_response_code(403); 
-        echo "ошибка. это не Ajax-запрос";
+        http_response_code(403);
+        echo "Ошибка. Это не Ajax-запрос";
         exit();
     }
 }
+?>

@@ -2,9 +2,9 @@
 
 class CookieHandler
 {
-    public $login;
-    public $password;
-    public $sessionId;
+    private $login;
+    private $password;
+    private $sessionId;
 
     public function __construct()
     {
@@ -28,9 +28,6 @@ class CookieHandler
 
     public function getUsername()
     {
-        ini_set('display_errors', 1);
-        ini_set('display_startup_errors', 1);
-        error_reporting(E_ALL);
         return $this->login;
     }
 }

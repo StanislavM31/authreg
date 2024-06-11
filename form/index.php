@@ -1,7 +1,7 @@
 <?php
 
-require_once __DIR__ . '/classes/Auth.php';
 require_once __DIR__ . '/classes/CookieHandler.php';
+require_once __DIR__ . '/classes/Login.php';
 
 
 $cookieHandler = new CookieHandler();
@@ -12,13 +12,13 @@ $cookieHandler = new CookieHandler();
 
 <head>
     <title>Авторизация</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./style.css">
     <meta charset="UTF-8">
 </head>
 
 <body>
     <div class="container_info">
-        <div class="cookie_container">
+        <div class="cookie_dump_container">
             <?php
             var_dump($_COOKIE);
             ?>
@@ -29,20 +29,19 @@ $cookieHandler = new CookieHandler();
     </div>
 
     <?php if ($cookieHandler->getUsername() !== null) : ?>
-        <div class="autorized">
+        <div class="autorized_form">
             <div class="autorized_user">
                 Добро пожаловать, <?= $cookieHandler->getUsername() ?>
             </div>
 
             <ul>
-                <li><a href="./pages/harrypotter.php">Список книг</a></li>
-                <li><a href="./pages/harrypotter.php">Список книг</a></li>
-                <li><a href="./pages/harrypotter.php">Список книг</a></li>
+                <li><a href="./pages/harrypotter.php">Книги о Гарри Поттере</a></li>
+                <li><a href="./pages/cats.php">Виды кошек</a></li>
             </ul>
             <form method="post" action="logout_process.php">
                 <button type="submit">Разлогиниться</button>
             </form>
-        </div>`
+        </div>
     <?php else : ?>
         <div class="container">
             <h3>Авторизуйтесь</h3>
