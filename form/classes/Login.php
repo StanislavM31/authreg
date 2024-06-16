@@ -1,5 +1,6 @@
 <?php
-require_once __DIR__ . '/UserDbHandler.php';
+/* require_once __DIR__ . '/UserDbHandler.php'; */
+
 
 class Login {
 

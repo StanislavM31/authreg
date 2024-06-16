@@ -1,9 +1,9 @@
-document.getElementById("authForm").addEventListener("submit", function(event) {
+document.getElementById("registrationForm").addEventListener("submit", function(event) {
     event.preventDefault();
 
-    let formData = new FormData(event.target);
+    let formData = new FormData(this);
 
-    fetch("login_process.php", {
+    fetch("registration_process.php", {
         method: "POST",
         body: formData,
         headers: {
@@ -14,11 +14,10 @@ document.getElementById("authForm").addEventListener("submit", function(event) {
         if (response.ok) {
             return response.json();
         } else {
-            throw new Error("Ошибка при отправке формы авторизации");
+            throw new Error("Ошибка при регистрации");
         }
     })
     .then(function(data) {
-        console.log(data.message);
         if (data.status === "success") {
             console.log(data.message);
             window.location.replace("index.php");
@@ -27,6 +26,6 @@ document.getElementById("authForm").addEventListener("submit", function(event) {
         }
     })
     .catch(function(error) {
-        console.error("Ошибка при выполнении запроса", error);
+        console.error(error);
     });
 });

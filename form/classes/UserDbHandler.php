@@ -21,12 +21,12 @@ class userDbHandler
     {
         $data = file_get_contents('../db.json');
         $users = json_decode($data, true);
+        $user = null;
 
         foreach ($users as $userData) {
             if ($userData['login'] === $login && $userData['password'] === $password) {
-                session_start();
-                $_SESSION['login'] = $userData['login'];
-                return $userData;
+                $user = $userData;
+                return $user;
             }
         }
 
