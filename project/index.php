@@ -38,7 +38,7 @@ $cookieHandler = new CookieHandler();
                 <li><a href="./pages/harrypotter.php">Книги о Гарри Поттере</a></li>
                 <li><a href="./pages/cats.php">Виды кошек</a></li>
             </ul>
-            <form id="logoutForm" method="post">
+            <form id="logoutForm" method="get">
                 <button type="submit">Разлогиниться</button>
             </form>
         </div>
