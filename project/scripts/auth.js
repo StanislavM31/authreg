@@ -1,8 +1,7 @@
-
 const authForm = document.getElementById("authForm");
 const logoutForm = document.getElementById("logoutForm");
 
-console.log("authForm",authForm, "logoutForm", logoutForm);
+console.log("authForm", authForm, "logoutForm", logoutForm);
 
 if (authForm) {
   authForm.addEventListener("submit", handleAuthForm);
@@ -13,10 +12,11 @@ if (logoutForm) {
 }
 
 function handleAuthForm(event) {
+  console.log("++++++");
   event.preventDefault();
-
+  
   let formData = new FormData(event.target);
-
+  
   fetch("login_process.php", {
     method: "POST",
     body: formData,
@@ -35,7 +35,8 @@ function handleAuthForm(event) {
       console.log(data.message);
       if (data.status === "success") {
         console.log(data.message);
-        window.location.replace("index.php");
+        window.location.href = "index.php";
+        /* window.location.replace("index.php"); */
       } else {
         console.error(data.message);
       }
@@ -43,16 +44,19 @@ function handleAuthForm(event) {
     .catch(function (error) {
       console.error("Ошибка при выполнении запроса", error);
     });
-}
+  }
 
-function handleLogoutForm(event) {
+  function handleLogoutForm(event) {
+    console.log("------");
   event.preventDefault();
-
+  
   document.cookie = "login=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
   document.cookie = "password=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-  document.cookie = "PHPSESSID=; expires=Mon, 01 May 2024 00:00:00 UTC; path=/;";
-  document.cookie = "session_id=; expires=Mon, 01 May 2024 00:00:00 UTC; path=/;";
-
+  document.cookie =
+    "PHPSESSID=; expires=Mon, 01 May 2024 00:00:00 UTC; path=/;";
+    document.cookie =
+    "session_id=; expires=Mon, 01 May 2024 00:00:00 UTC; path=/;";
+    
   this.submit();
   window.location.replace("index.php");
 }

@@ -30,15 +30,16 @@ $cookieHandler = new CookieHandler();
 
     <?php if ($cookieHandler->getUsername() !== null) : ?>
         <div class="autorized_form">
-            <div class="autorized_user">
-                Добро пожаловать, <?= $cookieHandler->getUsername() ?>
-            </div>
+            <form id="logoutForm" method="post">
+                <div class="autorized_user">
+                    Добро пожаловать, <?= $cookieHandler->getUsername() ?>
+                </div>
 
-            <ul>
-                <li><a href="./pages/harrypotter.php">Книги о Гарри Поттере</a></li>
-                <li><a href="./pages/cats.php">Виды кошек</a></li>
-            </ul>
-            <form id="logoutForm" method="get">
+                <ul>
+                    <li><a href="./pages/harrypotter.php">Книги о Гарри Поттере</a></li>
+                    <li><a href="./pages/cats.php">Виды кошек</a></li>
+                </ul>
+
                 <button type="submit">Разлогиниться</button>
             </form>
         </div>
