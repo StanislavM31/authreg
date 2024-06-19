@@ -14,9 +14,9 @@ if (logoutForm) {
 function handleAuthForm(event) {
   console.log("++++++");
   event.preventDefault();
-  
+
   let formData = new FormData(event.target);
-  
+
   fetch("login_process.php", {
     method: "POST",
     body: formData,
@@ -34,9 +34,13 @@ function handleAuthForm(event) {
     .then(function (data) {
       console.log(data.message);
       if (data.status === "success") {
-        console.log(data.message);
-        window.location.href = "index.php";
-        /* window.location.replace("index.php"); */
+        console.log("Вы успешно авторизованы");
+/*         setTimeout(function() {
+          window.location.href = "index.php";
+        }, 5000); */
+
+        window.location.replace("index.php");
+
       } else {
         console.error(data.message);
       }
@@ -44,19 +48,16 @@ function handleAuthForm(event) {
     .catch(function (error) {
       console.error("Ошибка при выполнении запроса", error);
     });
-  }
+}
 
-  function handleLogoutForm(event) {
-    console.log("------");
+function handleLogoutForm(event) {
   event.preventDefault();
-  
+
   document.cookie = "login=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
   document.cookie = "password=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-  document.cookie =
-    "PHPSESSID=; expires=Mon, 01 May 2024 00:00:00 UTC; path=/;";
-    document.cookie =
-    "session_id=; expires=Mon, 01 May 2024 00:00:00 UTC; path=/;";
-    
-  this.submit();
+  document.cookie = "PHPSESSID=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+  document.cookie = "session_id=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+  
   window.location.replace("index.php");
+
 }

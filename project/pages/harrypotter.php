@@ -1,13 +1,14 @@
 <?php
-var_dump($_COOKIE);
-
+session_start();
+var_dump($_SESSION);
+var_dump(session_id());
 
 require_once __DIR__ . '/../classes/CookieHandler.php';
 
 
 
 $cookieHandler = new CookieHandler();
-
+$username = $cookieHandler->getUsername();
 ?>
 
 <!DOCTYPE html>
@@ -22,23 +23,13 @@ $cookieHandler = new CookieHandler();
 </head>
 
 <body>
-    <a href='/'>На главную</a>
-    <h1>Harry Potter Book List</h1>
-
-    <?php 
-    session_start();
-    echo "Значение куки session_id: " . $_COOKIE['session_id'] . "<br>";
-    echo "значение session_id(): " . (session_id()) . "<br>";
-    echo "Проверка : " . (isset($_COOKIE['session_id']) == session_id()) . "<br>";
-    ?>
-
+    <div><a href='/'>На главную</a></div>
+    <br>
     <?php
-    
-
-    echo "Текущий ID сессии: " . session_id();
-    if ($_COOKIE['session_id'] == session_id()) {
-
+    if ($username) {
     ?>
+        <p>Вы зашли как, <?= $cookieHandler->getUsername() ?></p>
+        <h1>Harry Potter Book List</h1>
         <div class="container">
             <ul>
                 <li>Harry Potter and the Philosopher's Stone</li>

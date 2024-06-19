@@ -8,7 +8,7 @@ class Login
     {
         $userDbHandler = new UserDbHandler();
         $authResult = $userDbHandler->authenticateUser($login, $password);
-    
+
         switch ($authResult) {
             case 'no user':
                 return ['status' => 'no user', 'message' => 'Пользователь не найден'];
@@ -24,10 +24,20 @@ class Login
 
     private function startSession($login)
     {
-        session_start();
-        $_SESSION['login'] = $login;
-        setcookie('login', $login, time() + 30, '/', '', true, true);
-        setcookie('session_id', session_id(), time() + 30, '/', '', true, true);
+        $userDbHandler = new UserDbHandler();
+        $sessionID = $userDbHandler->giveMeSessionID($login);
+        if ($sessionID) {
+
+            session_id($sessionID); 
+            session_start();
+
+            $_SESSION['login'] = $login;
+            setcookie('login', $login, time() + 30, '/');
+            setcookie('session_id', $sessionID, time() + 30, '/');
+        } else {
+            $_SESSION['login'] = $login;
+            setcookie('login', $login, time() + 30, '/');
+            setcookie('session_id', "smthWrngWhthSessionID", time() + 30, '/');
+        }
     }
 }
-?>

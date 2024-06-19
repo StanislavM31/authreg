@@ -9,28 +9,28 @@ class userDbHandler
         $data = file_get_contents($this->dbJsonPath);
         return json_decode($data, true);
     }
-    
+
     public function getUserByUsername($login)
     {
         $allUsers = $this->getAllUsers();
         $usersCount = count($allUsers);
-    
+
         for ($i = 0; $i < $usersCount; $i++) {
             $tempUser = $allUsers[$i];
-    
+
             if ($tempUser['login'] === $login) {
                 error_log('$tempUser[login] === $login: ' . print_r($tempUser['login'], true));
                 return true;
             }
         }
-    
+
         return false;
     }
-    
-    protected function validatePassword($login, $password)
+
+    protected function checkPassword($login, $password)
     {
         $users = $this->getAllUsers();
-    
+
         foreach ($users as $user) {
             if ($user['login'] === $login) {
                 if ($user['password'] === $password) {
@@ -40,14 +40,14 @@ class userDbHandler
                 }
             }
         }
-    
+
         return false;
     }
-    
+
     public function authenticateUser($login, $password)
     {
         if ($this->getUserByUsername($login)) {
-            if ($this->validatePassword($login, $password)) {
+            if ($this->checkPassword($login, $password)) {
                 return 'success';
             } else {
                 return 'error password';
@@ -57,19 +57,28 @@ class userDbHandler
         }
     }
 
+    public function giveMeSessionID($login)
+    {
+        $allUsers = $this->getAllUsers();
+
+        foreach ($allUsers as $user) {
+            if ($user['login'] === $login) {
+                return $user['session_id'];
+                exit();
+            }
+        }
+
+    }
+
     public function createUser($userData)
     {
-    
     }
 
     public function updateUser($userId, $userData)
     {
-
     }
 
     public function deleteUser($userId)
     {
-
     }
 }
-?>

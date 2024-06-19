@@ -1,4 +1,8 @@
 <?php
+require_once __DIR__ . '/UserDbHandler.php';
+require_once 'classes/UserDbHandler.php';
+
+$userDbHandler = new UserDbHandler();
 
 class Registration {
     private $login;
