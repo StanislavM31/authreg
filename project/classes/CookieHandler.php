@@ -25,7 +25,6 @@ class CookieHandler
     }
 
 
-
     public function getUsername()
     {
         return $this->login;

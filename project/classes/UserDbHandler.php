@@ -4,7 +4,7 @@ class userDbHandler
 {
     private $dbJsonPath = __DIR__ . '/../db.json';
 
-    public function getAllUsers()
+    private function getAllUsers()
     {
         $data = file_get_contents($this->dbJsonPath);
         return json_decode($data, true);
@@ -19,15 +19,14 @@ class userDbHandler
             $tempUser = $allUsers[$i];
 
             if ($tempUser['login'] === $login) {
-                error_log('$tempUser[login] === $login: ' . print_r($tempUser['login'], true));
+/*                 error_log('$tempUser[login] === $login: ' . print_r($tempUser['login'], true)); */
                 return true;
             }
         }
-
         return false;
     }
 
-    protected function checkPassword($login, $password)
+    private function checkPassword($login, $password)
     {
         $users = $this->getAllUsers();
 
@@ -70,15 +69,15 @@ class userDbHandler
 
     }
 
-    public function createUser($userData)
+    public function createUser()
     {
     }
 
-    public function updateUser($userId, $userData)
+    public function updateUser($login)
     {
     }
 
-    public function deleteUser($userId)
+    public function deleteUser($login)
     {
     }
 }
