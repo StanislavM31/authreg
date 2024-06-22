@@ -18,7 +18,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['login'] = $login;
                 setcookie('login', $login, time() + 30);
                 $response = array("status" => "success", "message" => "Регистрация успешна");
-                /*  */
             } else {
                 session_destroy();
                 $response = array("status" => "error", "message" => $registrationResult);
@@ -28,12 +27,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo json_encode($response);
         } catch (Exception $error) {
             http_response_code(500);
-            echo "Произошла ошибка: " . $error->getMessage();
+            echo "Ошибка: " . $error->getMessage();
         }
     } else {
         http_response_code(403);
-        echo "ошибка. это не Ajax-запрос";
-        exit();
+        return ['status' => 'error', 'message' => "Error. это не ajax"];
+
     }
 }
-?>
