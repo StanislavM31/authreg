@@ -2,6 +2,7 @@ document.getElementById("registrationForm").addEventListener("submit", function(
     event.preventDefault();
 
     let formData = new FormData(this);
+    console.log(formData);
 
     fetch("registration_process.php", {
         method: "POST",

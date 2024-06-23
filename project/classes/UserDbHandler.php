@@ -69,8 +69,12 @@ class userDbHandler
 
     }
 
-    public function createUser()
+    public function createUser($login, $password, $confirmPassword, $email, $session_id)
     {
+        if ($password !== $confirmPassword) {
+            return 'Пароли не совпадают';
+        }
+        
     }
 
     public function updateUser($login)

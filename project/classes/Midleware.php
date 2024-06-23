@@ -1,99 +1,78 @@
 <?php
+require_once 'classes/Registration.php';
+require_once 'classes/Login.php';
+require_once 'classes/UserDBHandler.php';
 
 class Middleware
 {
+    private $isAjax;
+    private $login;
+    private $password;
+    private $confirmPassword;
+    private $email;
+    private $session_id;
 
-    /* fetch("registration_process.php", {
-    method: "POST",
-    body: formData,
-    headers: {
-        "X-Requested-With": "xmlhttprequest",
-        "X-Form-Name": "your-form-name"
-    }
-}) */
-    private function parseRequest($requestData)
+    private $formName;
+    private $response;
+
+
+    public function __construct()
     {
-        $login = $requestData['login'] ?? '';
-        $password = $requestData['password'] ?? '';
-        
-        $formName = $_SERVER['HTTP_X_FORM_NAME'] ?? '';
-    
-    
-        return [
-            'login' => $login,
-            'password' => $password
-        ];
+        $this->isAjax = isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
+        $this->login = isset($_POST['login']) ? $_POST['login'] : '';
+        $this->password = isset($_POST['password']) ? $_POST['password'] : '';
+        $this->confirmPassword = isset($_POST['confirm_password']) ? $_POST['confirm_password'] : null;
+        $this->email = isset($_POST['email']) ? $_POST['email'] : null;
+        $this->session_id = session_id();
+
+        $this->formName = 'myForm'; 
     }
 
-    public function handleRequest()
+    public function isAjax()
     {
-        try {
-            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest') {
-                    $action = $_POST['action'];
-                    $login = $_POST['login'];
-                    $password = $_POST['password'];
-
-                    if ($action === 'login') {
-                        $response = $this->handleLogin($login, $password);
-                    } elseif ($action === 'register') {
-                        $confirmPassword = $_POST['confirm_password'];
-                        $email = $_POST['email'];
-                        $session_id = session_id();
-                        $response = $this->handleRegistration($login, $password, $confirmPassword, $email, $session_id);
-                    } else {
-                        throw new Exception("Неверное действие");
-                    }
-
-                    $this->sendJsonResponse($response);
-                } else {
-                    throw new Exception("Ошибка. Это не Ajax-запрос");
-                }
-            } else {
-                throw new Exception("Неверный метод запроса");
-            }
-        } catch (Exception $error) {
-            http_response_code(400);
-            $this->sendJsonResponse([
-                'status' => 'error',
-                'message' => $error->getMessage()
-            ]);
+        if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest') {
+            $this->isAjax = true;
+            return $this->isAjax;
+        } else {
+            $this->response = ['status' => 'error', 'message' => "Error. это не ajax"];
         }
     }
 
-    private function handleLogin($login, $password)
+    public function registration()
     {
-        $loginObject = new Login();
-        return $loginObject->authenticateUser($login, $password);
-    }
+        if ($this->confirmPassword == $this->password) {
+            $this->response = ['status' => 'error', 'message' => "не совпадают пароли"];
+        }
 
-    private function handleRegistration($login, $password, $confirmPassword, $email, $session_id)
-    {
-        $registration = new Registration($login, $password, $confirmPassword, $email, $session_id);
+        if ($this->email) {
+            //нет @ или email короткий
+            $this->response = ['status' => 'error', 'message' => "проблемы с email"];
+        }
+
+        $registration = new Registration($this->login, $this->password, $this->confirmPassword, $this->email, $this->session_id);
         $registrationResult = $registration->register();
 
         if ($registrationResult === true) {
-            $_SESSION['login'] = $login;
-            setcookie('login', $login, time() + 30);
-            return [
-                'status' => 'success',
-                'message' => 'Регистрация успешна'
-            ];
+            $_SESSION['login'] = $this->login;
+            setcookie('login', $this->login, time() + 30);
+            $response = array("status" => "success", "message" => "Регистрация успешна");
         } else {
             session_destroy();
-            return [
-                'status' => 'error',
-                'message' => $registrationResult
-            ];
+            $response = array("status" => "error", "message" => $registrationResult);
         }
-    }
 
-    private function sendJsonResponse($data)
+        header('Content-Type: application/json');
+        echo json_encode($response);
+
+ 
+        header("Location: index.php");
+        exit();
+    }
+    public function getResponse()
     {
         header('Content-Type: application/json');
-        echo json_encode($data);
+        
+        return json_encode($this->response);
+        exit();
     }
 }
-
-$middleware = new Middleware();
-$middleware->handleRequest();
