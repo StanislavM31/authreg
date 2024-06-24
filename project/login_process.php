@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . 'classes/Login.php';
+require_once 'classes/Login.php';
 
 try {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {

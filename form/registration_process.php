@@ -1,4 +1,5 @@
 <?php
+/* ===== FORM ====== */
 require_once __DIR__ . '/classes/Registration.php';
 session_start();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

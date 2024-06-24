@@ -13,17 +13,21 @@ document.getElementById("registrationForm").addEventListener("submit", function(
     })
     .then(function(response) {
         if (response.ok) {
+            console.log("Ответ от сервера RESPONSE:", response);
             return response.json();
         } else {
             throw new Error("Ошибка при регистрации");
         }
     })
     .then(function(data) {
+        /* console.log("Дебаг:", data); */
+
         if (data.status === "success") {
-            console.log(data.message);
-            window.location.replace("index.php");
+            console.log("Регистрация успешна:", data.message);
+            window.location.replace("/");
         } else {
-            console.error(data.message);
+            console.error("Ошибка при регистрации:", data.message);
+            /* console.error("Ошибка при регистрации:", data); */
         }
     })
     .catch(function(error) {

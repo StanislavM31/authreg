@@ -1,7 +1,7 @@
 const authForm = document.getElementById("authForm");
 const logoutForm = document.getElementById("logoutForm");
 
-console.log("authForm", authForm, "logoutForm", logoutForm);
+/* console.log("authForm", authForm, "logoutForm", logoutForm); */
 
 if (authForm) {
   authForm.addEventListener("submit", handleAuthForm);
@@ -32,15 +32,13 @@ function handleAuthForm(event) {
       }
     })
     .then(function (data) {
-      console.log(data.message);
       if (data.status === "success") {
-        console.log("Вы успешно авторизованы");
+        console.log(data.message);
 /*         setTimeout(function() {
           window.location.href = "index.php";
-        }, 5000); */
-
-        window.location.replace("index.php");
-
+        }, 2000); */
+        
+        window.location.href = "index.php";
       } else {
         console.error(data.message);
       }

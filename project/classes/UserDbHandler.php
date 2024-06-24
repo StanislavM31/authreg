@@ -26,13 +26,13 @@ class userDbHandler
         return false;
     }
 
-    private function checkPassword($login, $password)
+    private function checkPassword($login, $hashedPassword)
     {
         $users = $this->getAllUsers();
 
         foreach ($users as $user) {
             if ($user['login'] === $login) {
-                if ($user['password'] === $password) {
+                if ($user['password'] === $hashedPassword) {
                     return true;
                 } else {
                     return false;
@@ -43,10 +43,10 @@ class userDbHandler
         return false;
     }
 
-    public function authenticateUser($login, $password)
+    public function authenticateUser($login, $hashedPassword)
     {
         if ($this->getUserByUsername($login)) {
-            if ($this->checkPassword($login, $password)) {
+            if ($this->checkPassword($login, $hashedPassword)) {
                 return 'success';
             } else {
                 return 'error password';
@@ -69,16 +69,57 @@ class userDbHandler
 
     }
 
-    public function createUser($login, $password, $confirmPassword, $email, $session_id)
+    public function createUser($login, $hashedPassword, $email, $session_id)
     {
-        if ($password !== $confirmPassword) {
-            return 'Пароли не совпадают';
-        }
-        
-    }
+        $data = file_get_contents($this->dbJsonPath);
+        $users = json_decode($data, true) ?? [];
 
+        $user = [
+            'login' => $login,
+            'password' => $hashedPassword,
+            'email' => $email,
+            'session_id' => $session_id,
+            'last_visited' => date('Y-m-d H:i:s'),
+
+        ];
+    
+        $users[] = $user;
+    
+        file_put_contents($this->dbJsonPath, json_encode($users, JSON_PRETTY_PRINT));
+    
+        return true;
+    }
+    public function getUserByEmail($email)
+    {
+        $allUsers = $this->getAllUsers();
+        $usersCount = count($allUsers);
+
+        for ($i = 0; $i < $usersCount; $i++) {
+            $tempUser = $allUsers[$i];
+
+            if ($tempUser['email'] === $email) {
+                return true;
+            }
+        }
+        return false;
+    }
     public function updateUser($login)
     {
+        $allUsers = $this->getAllUsers();
+        $usersCount = count($allUsers);
+    
+        for ($i = 0; $i < $usersCount; $i++) {
+            $tempUser = $allUsers[$i];
+    
+            if ($tempUser['login'] === $login) {
+                $updatedUser = array_replace($tempUser, ['last_visited' => date('Y-m-d H:i:s')]);
+                $allUsers[$i] = $updatedUser;
+                file_put_contents($this->dbJsonPath, json_encode($allUsers, JSON_PRETTY_PRINT));
+                return true;
+            }
+        }
+    
+        return false;
     }
 
     public function deleteUser($login)

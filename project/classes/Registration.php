@@ -1,8 +1,9 @@
 <?php
-require_once __DIR__ . '/UserDbHandler.php';
-require_once 'classes/UserDbHandler.php';
 
-$userDbHandler = new UserDbHandler();
+require_once 'classes/UserDbHandler.php';
+require_once 'classes/Crypto.php';
+
+
 
 class Registration {
     private $login;
@@ -20,41 +21,22 @@ class Registration {
     }
     
     public function register() {
+        $userDbHandler = new UserDbHandler();
+        
         if ($this->password !== $this->confirmPassword) {
             return 'Пароли не совпадают';
         }
-
-        $user = [
-            'login' => $this->login,
-            //'password' => $this->hashPassword($this->password),
-            'password' => $this->password,
-            'email' => $this->email,
-            'session_id' => $this->session_id
-        ];
+        if ($userDbHandler->getUserByEmail($this->email) ) {
+            return 'Пользователь с таким email уже есть';
+        }
         
-        $users = $this->getAllUsers();
-        $users[] = $user;
-        
-        $this->saveUser($users);
+        $crypto = new Crypto();
 
+        $userDbHandler->createUser($this->login, $crypto->hashPassword($this->password), $this->email, $this->session_id );
+    
         return true;
     }
     
-/*     private function hashPassword($password) {
-        
-        return password_hash($password, PASSWORD_DEFAULT);
-    } */
-
-    private function getAllUsers() {
-        $data = file_get_contents('db.json');
-        $users = json_decode($data, true) ?? [];
-
-        return $users;
-    }
-
-    private function saveUser($users) {
-        file_put_contents('db.json', json_encode($users, JSON_PRETTY_PRINT));
-    }
 }
 
 ?>
