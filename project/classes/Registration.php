@@ -26,6 +26,7 @@ class Registration {
         if ($this->password !== $this->confirmPassword) {
             return 'Пароли не совпадают';
         }
+
         if ($userDbHandler->getUserByEmail($this->email) ) {
             return 'Пользователь с таким email уже есть';
         }

@@ -113,3 +113,10 @@ li {
     border: 1px solid black;
   
 }
+button#forgetMeButton{
+    background-color: rgba(219, 28, 28, 0.664);
+    border: 2px solid rgba(219, 28, 28, 0.521);
+}
+button#forgetMeButton:hover {
+    background-color: rgba(199, 23, 23, 0.596);
+  }
