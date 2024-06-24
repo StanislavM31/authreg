@@ -4,7 +4,7 @@
         "password": "2e0aca891f2a8aedf265edf533a6d9a8",
         "email": "123@mail.ru",
         "session_id": "gumschq9kc8agaq8p3agkekt3u",
-        "last_visited": "2024-06-24 02:41:30"
+        "last_visited": "2024-06-24 04:02:09"
     },
     {
         "login": "admin",
@@ -40,5 +40,19 @@
         "email": "test@gmail.com",
         "session_id": "4mub2m2gufhs6j39qst4634sqe",
         "last_visited": "2024-06-24 02:25:01"
+    },
+    {
+        "login": "retrouser",
+        "password": "2e0aca891f2a8aedf265edf533a6d9a8",
+        "email": "12retro@gmail.com",
+        "session_id": "o3e7bur0g1i7pia1fdjplq5tq8",
+        "last_visited": "2024-06-24 03:13:24"
+    },
+    {
+        "login": "test",
+        "password": "2e0aca891f2a8aedf265edf533a6d9a8",
+        "email": "test@mail.ru",
+        "session_id": "6vml5p7468infbi1fqgrinobje",
+        "last_visited": "2024-06-24 04:01:09"
     }
 ]

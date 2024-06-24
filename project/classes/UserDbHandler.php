@@ -124,5 +124,16 @@ class userDbHandler
 
     public function deleteUser($login)
     {
+        $allUsers = $this->getAllUsers();
+    
+        foreach ($allUsers as $key => $user) {
+            if ($user['login'] === $login) {
+                unset($allUsers[$key]);
+                file_put_contents($this->dbJsonPath, json_encode($allUsers, JSON_PRETTY_PRINT));
+                return ['status' => 'success', 'message' => 'Пользователь удален из db.json'];;
+            }
+        }
+    
+        return false;
     }
 }
