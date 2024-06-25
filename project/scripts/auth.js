@@ -1,5 +1,6 @@
 const authForm = document.getElementById("authForm");
 const logoutForm = document.getElementById("logoutForm");
+const forgetMeButton = document.getElementById("forgetMeButton");
 
 /* console.log("authForm", authForm, "logoutForm", logoutForm); */
 
@@ -9,6 +10,10 @@ if (authForm) {
 
 if (logoutForm) {
   logoutForm.addEventListener("submit", handleLogoutForm);
+}
+
+if (forgetMeButton) {
+  forgetMeButton.addEventListener("click", handleForgetMeButtonClick);
 }
 
 function handleAuthForm(event) {
@@ -48,8 +53,35 @@ function handleAuthForm(event) {
     });
 }
 
-function handleLogoutForm(event) {
+function handleForgetMeButtonClick(event) {
   event.preventDefault();
+
+
+
+  fetch("delete_user_process.php", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then(function (response) {
+      if (response.ok) {
+        console.log("Пользователь и данные о нем удалены из базы данных");
+        handleLogoutForm(event);//delete cookie
+      } else {
+        throw new Error("Не удалось удалить пользователя");
+      }
+    })
+    .catch(function (error) {
+      console.error("Ошибка на сервере", error);
+    });
+
+  console.log("пользователь удален");
+
+}
+
+function handleLogoutForm(event) {
+  event.preventDefault(); 
 
   document.cookie = "login=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
   document.cookie = "password=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";

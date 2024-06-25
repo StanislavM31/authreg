@@ -41,7 +41,7 @@ $cookieHandler = new CookieHandler();
                 </ul>
 
                 <button type="submit">Разлогиниться</button>
-                <!-- <button id="forgetMeButton" type="submit">Забыть меня</button> -->
+                <button id="forgetMeButton" type="submit">Забыть меня</button>
             </form>
         </div>
     <?php else : ?>

@@ -130,7 +130,8 @@ class userDbHandler
             if ($user['login'] === $login) {
                 unset($allUsers[$key]);
                 file_put_contents($this->dbJsonPath, json_encode($allUsers, JSON_PRETTY_PRINT));
-                return ['status' => 'success', 'message' => 'Пользователь удален из db.json'];;
+                /* return ['status' => 'success', 'message' => 'Пользователь удален из db.json']; */
+                return true;
             }
         }
     
