@@ -122,12 +122,12 @@ class userDbHandler
         return false;
     }
 
-    public function deleteUser($login)
+    public function deleteUser($email)
     {
         $allUsers = $this->getAllUsers();
     
         foreach ($allUsers as $key => $user) {
-            if ($user['login'] === $login) {
+            if ($user['login'] === $email) {
                 array_splice($allUsers, $key, 1);
                 file_put_contents($this->dbJsonPath, json_encode($allUsers, JSON_PRETTY_PRINT));
                 return true;

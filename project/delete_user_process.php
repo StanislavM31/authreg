@@ -9,7 +9,7 @@ error_log("Email: " . $email);
 
 try {
     $delete = new userDbHandler();
-    $deleteResult = $delete->deleteUser($login);
+    $deleteResult = $delete->deleteUser($email);
     if ($deleteResult) {
         $response = array('status' => 'success', 'message' => 'Данные пользователя успешно удалены.');
         http_response_code(200);
