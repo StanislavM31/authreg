@@ -2,7 +2,9 @@ const authForm = document.getElementById("authForm");
 const logoutForm = document.getElementById("logoutForm");
 const forgetMeButton = document.getElementById("forgetMeButton");
 
-/* console.log("authForm", authForm, "logoutForm", logoutForm); */
+console.log("authForm", authForm, );
+console.log("logoutForm", logoutForm);
+console.log("forgetMeButton", forgetMeButton);
 
 if (authForm) {
   authForm.addEventListener("submit", handleAuthForm);
@@ -65,6 +67,7 @@ function handleForgetMeButtonClick(event) {
     },
   })
     .then(function (response) {
+      console.log("response", response);
       if (response.ok) {
         console.log("Пользователь и данные о нем удалены из базы данных");
         handleLogoutForm(event);//delete cookie
@@ -75,8 +78,6 @@ function handleForgetMeButtonClick(event) {
     .catch(function (error) {
       console.error("Ошибка на сервере", error);
     });
-
-  console.log("пользователь удален");
 
 }
 
