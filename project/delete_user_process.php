@@ -4,6 +4,8 @@
 $login = $_COOKIE['login'];
 $email = $_COOKIE['email'];
 
+
+
 error_log("Login: " . $login);
 error_log("Email: " . $email);
 
