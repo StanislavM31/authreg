@@ -13,23 +13,21 @@ document.getElementById("registrationForm").addEventListener("submit", function(
     })
     .then(function(response) {
         if (response.ok) {
-            console.log("Дебаг:", response);
+            console.log("response of registration:", response);
             return response.json();
+        } else {
+            // когда не ok
+            return response.json().then(data => {
+                throw new Error(` ${data.message}`);
+            });
         }
     })
     .then(function(data) {
-        if (data.status === "success") {
-            console.log("Регистрация успешна:", data.message);
-            setTimeout(function() {
-                window.location.href = "index.php";
-              }, 2000); 
-            window.location.href = "/";
-        } else {
-            alert("Ошибка: " + data.message);
-        }
+        console.log("Регистрация успешна", data.message);
+        window.location.href = "/";
     })
     .catch(function(error) {
-        console.log("error ВЫВОД", error);
-        console.log("Возникла ошибка при записи в бд: " + error.message);
+        console.log("error: ", error);
+        alert( error);
     });
 });

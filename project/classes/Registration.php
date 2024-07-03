@@ -29,9 +29,17 @@ class Registration
         if ($this->password !== $this->confirmPassword) {
             return 'Пароли не совпадают';
         }
-
         if ($userDbHandler->getUserByEmail($this->email)) {
-            return 'Пользователь с таким email уже есть';
+            return 'Пользователь с таким email уже зарегистрирован';
+        }
+        if (strlen($this->password) < 3) {
+            return 'Пароль должен быть не менее 3 символов';
+        }
+        if (empty($this->login) || empty($this->password) || empty($this->confirmPassword) || empty($this->email)) {
+            return 'Все поля должны быть заполнены';
+        }
+        if (trim($this->login) === '' || trim($this->password) === '' || trim($this->confirmPassword) === '' || trim($this->email) === '') {
+            return 'Не используйте пробелы для заполнения полей';
         }
 
         $crypto = new Crypto();

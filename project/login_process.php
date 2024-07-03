@@ -4,12 +4,6 @@ require_once 'classes/Login.php';
 
 try {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        if (trim($_POST['login']) === '' || trim($_POST['password']) === '') {
-            // Если поля не заполнены или содержат только пробелы, возвращаем ответ с кодом ошибки
-            http_response_code(400); // Код ошибки 400 - Bad Request
-            echo json_encode(['status' => 'error', 'message' => 'Пожалуйста, заполните все поля формы.']);
-            exit;
-        }
         if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest') {
             $login = $_POST['login'];
             $password = $_POST['password'];

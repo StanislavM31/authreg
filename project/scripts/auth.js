@@ -19,7 +19,7 @@ if (forgetMeButton) {
 }
 
 function handleAuthForm(event) {
-  console.log("++++++");
+
   event.preventDefault();
 
   let formData = new FormData(event.target);
@@ -32,21 +32,17 @@ function handleAuthForm(event) {
     },
   })
     .then(function (response) {
-      console.log("response", response);
+      console.log("response of auth:", response);
       if (response.ok) {
         return response.json();
-      } else {
-        console.log("response при ошибке", response);
-        throw new Error("Ошибка при отправке формы авторизации");
       }
     })
     .then(function (data) {
       console.log("data", data);
       if (data.status === "success") {
-        console.log(data.message);
-        /*         setTimeout(function() {
+        setTimeout(function () {
           window.location.href = "index.php";
-        }, 2000); */
+        }, 4000);
 
         window.location.href = "/";
       } else {
@@ -55,7 +51,7 @@ function handleAuthForm(event) {
       }
     })
     .catch(function (error) {
-      alert("Ошибка при выполнении запроса" + JSON.stringify(error));
+      alert("Ошибка: " + error);
     });
 }
 
@@ -85,10 +81,8 @@ function handleLogoutForm(event) {
 
   document.cookie = "login=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
   document.cookie = "password=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-  document.cookie =
-    "PHPSESSID=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-  document.cookie =
-    "session_id=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+  document.cookie = "PHPSESSID=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+  document.cookie = "session_id=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 
   window.location.replace("/");
 }
