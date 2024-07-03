@@ -14,10 +14,10 @@
             <input type="text" id="login" name="login" placeholder="Логин" required><br>
             
             <label for="password">Пароль</label>
-            <input type="password" id="password" name="password" placeholder="Пароль" required><br>
+            <input type="text" id="password" name="password" placeholder="Пароль" required><br>
             
             <label for="confirm_password">Подтверждение пароля</label>
-            <input type="password" id="confirm_password" name="confirm_password" placeholder="Подтверждение пароля" required><br>
+            <input type="text" id="confirm_password" name="confirm_password" placeholder="Подтверждение пароля" required><br>
             
             <label for="email">Email</label>
             <input type="email" id="email" name="email" placeholder="Email" required><br>

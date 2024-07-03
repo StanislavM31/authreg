@@ -13,24 +13,23 @@ document.getElementById("registrationForm").addEventListener("submit", function(
     })
     .then(function(response) {
         if (response.ok) {
-            console.log("Ответ от сервера RESPONSE:", response);
+            console.log("Дебаг:", response);
             return response.json();
-        } else {
-            throw new Error("Ошибка при регистрации");
         }
     })
     .then(function(data) {
-        /* console.log("Дебаг:", data); */
-
         if (data.status === "success") {
             console.log("Регистрация успешна:", data.message);
-            window.location.replace("/");
+            setTimeout(function() {
+                window.location.href = "index.php";
+              }, 2000); 
+            window.location.href = "/";
         } else {
-            console.error("Ошибка при регистрации:", data.message);
-            /* console.error("Ошибка при регистрации:", data); */
+            alert("Ошибка: " + data.message);
         }
     })
     .catch(function(error) {
-        console.error(error);
+        console.log("error ВЫВОД", error);
+        console.log("Возникла ошибка при записи в бд: " + error.message);
     });
 });

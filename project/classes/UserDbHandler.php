@@ -19,7 +19,7 @@ class userDbHandler
             $tempUser = $allUsers[$i];
 
             if ($tempUser['login'] === $login) {
-/*                 error_log('$tempUser[login] === $login: ' . print_r($tempUser['login'], true)); */
+                /*                 error_log('$tempUser[login] === $login: ' . print_r($tempUser['login'], true)); */
                 return true;
             }
         }
@@ -63,15 +63,17 @@ class userDbHandler
         foreach ($allUsers as $user) {
             if ($user['login'] === $login) {
                 return $user['session_id'];
-                exit();
+                /* exit(); */
             }
         }
-
     }
 
     public function createUser($login, $hashedPassword, $email, $session_id)
     {
+        date_default_timezone_set('Europe/Moscow');
         $data = file_get_contents($this->dbJsonPath);
+        
+
         $users = json_decode($data, true) ?? [];
 
         $user = [
@@ -82,13 +84,16 @@ class userDbHandler
             'last_visited' => date('Y-m-d H:i:s'),
 
         ];
-    
+
         $users[] = $user;
-    
+
+        /* file_put_contents($this->dbJsonPath, json_encode($users, JSON_PRETTY_PRINT)); */
         file_put_contents($this->dbJsonPath, json_encode($users, JSON_PRETTY_PRINT));
-    
+        
         return true;
+
     }
+    
     public function getUserByEmail($email)
     {
         $allUsers = $this->getAllUsers();
@@ -105,12 +110,14 @@ class userDbHandler
     }
     public function updateUser($login)
     {
+        date_default_timezone_set('Europe/Moscow');
+
         $allUsers = $this->getAllUsers();
         $usersCount = count($allUsers);
-    
+
         for ($i = 0; $i < $usersCount; $i++) {
             $tempUser = $allUsers[$i];
-    
+
             if ($tempUser['login'] === $login) {
                 $updatedUser = array_replace($tempUser, ['last_visited' => date('Y-m-d H:i:s')]);
                 $allUsers[$i] = $updatedUser;
@@ -118,22 +125,22 @@ class userDbHandler
                 return true;
             }
         }
-    
+
         return false;
     }
 
-    public function deleteUser($email)
+    public function deleteUser($session_id)
     {
         $allUsers = $this->getAllUsers();
-    
+
         foreach ($allUsers as $key => $user) {
-            if ($user['login'] === $email) {
+            if ($user['session_id'] === $session_id) {
                 array_splice($allUsers, $key, 1);
                 file_put_contents($this->dbJsonPath, json_encode($allUsers, JSON_PRETTY_PRINT));
                 return true;
             }
         }
-    
+
         return false;
     }
 }

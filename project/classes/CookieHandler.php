@@ -17,12 +17,12 @@ class CookieHandler
     {
         if ($this->login !== null /* && $this->password !== null && $this->sessionId !== null */) {
             echo 'Cookie username: ' . $this->login . '<br>';
-            echo 'Cookie password: ' . $this->password . '<br>';
+            /* echo 'Cookie password: ' . $this->password . '<br>'; */
             echo 'Cookie sessionId: ' . $this->sessionId . '<br>';
             echo 'Request Method: ' . $_SERVER['REQUEST_METHOD'] . '<br>';
             echo 'Request URI: ' . $_SERVER['REQUEST_URI'] . '<br>';
         } else {
-            echo 'Куки username, password или session_id отсутствуют.';
+            echo 'Куки не установлены';
         }
     }
 

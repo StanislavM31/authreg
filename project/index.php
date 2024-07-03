@@ -18,17 +18,12 @@ $cookieHandler = new CookieHandler();
 
 <body>
     <div class="container_info">
-        <div class="cookie_dump_container">
-            <?php
-            var_dump($_COOKIE);
-            ?>
-        </div>
         <div class="cookie_display">
             <?php $cookieHandler->displayCookies(); ?>
         </div>
     </div>
 
-    <?php if ($cookieHandler->getUsername() !== null) : ?>
+    <?php if ($cookieHandler->getUsername() !== null): ?>
         <div class="autorized_form">
             <form id="logoutForm" method="post">
                 <div class="autorized_user">
@@ -44,7 +39,7 @@ $cookieHandler = new CookieHandler();
                 <button id="forgetMeButton" type="submit">Забыть меня</button>
             </form>
         </div>
-    <?php else : ?>
+    <?php else: ?>
         <div class="container">
             <h3>Авторизуйтесь</h3>
             <form id="authForm" method="post">
@@ -52,7 +47,7 @@ $cookieHandler = new CookieHandler();
                 <input type="text" id="login" name="login" placeholder="Логин" required><br>
 
                 <label for="password">Пароль</label>
-                <input type="text" id="password" name="password" placeholder="Пароль" required><br>
+                <input type="password" id="password" name="password" placeholder="Пароль" required><br>
 
                 <button type="submit">Войти</button>
             </form>

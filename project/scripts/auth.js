@@ -32,26 +32,30 @@ function handleAuthForm(event) {
     },
   })
     .then(function (response) {
+      console.log("response",response);
       if (response.ok) {
         return response.json();
       } else {
+        console.log("response при ошибке",response);
         throw new Error("Ошибка при отправке формы авторизации");
       }
     })
     .then(function (data) {
+      console.log("data",data);
       if (data.status === "success") {
         console.log(data.message);
 /*         setTimeout(function() {
           window.location.href = "index.php";
         }, 2000); */
         
-        window.location.href = "index.php";
+        window.location.href = "/";
       } else {
-        console.error(data.message);
+        console.log("data.message:",data.message);
+        alert(data.message);
       }
     })
     .catch(function (error) {
-      console.error("Ошибка при выполнении запроса", error);
+      alert("Ошибка при выполнении запроса"+ JSON.stringify(error));
     });
 }
 

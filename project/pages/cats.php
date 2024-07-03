@@ -10,7 +10,7 @@ $username = $cookieHandler->getUsername();
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
     <meta charset="UTF-8">
@@ -22,14 +22,9 @@ $username = $cookieHandler->getUsername();
 
 <body>
     <div class="container_info">
-        <div class="cookie_dump_container">
-            <?php
-            var_dump($_COOKIE);
-            ?>
-        </div>
         <div class="cookie_display">
             <?php $cookieHandler->displayCookies(); ?>
-            
+
         </div>
     </div>
 

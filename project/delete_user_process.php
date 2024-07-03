@@ -2,14 +2,13 @@
 
 
 $login = $_COOKIE['login'];
-$email = $_COOKIE['email'];
+$session_id = $_COOKIE['session_id'];
 
-error_log("Login: " . $login);
-error_log("Email: " . $email);
+
 
 try {
     $delete = new userDbHandler();
-    $deleteResult = $delete->deleteUser($email);
+    $deleteResult = $delete->deleteUser($session_id);
     if ($deleteResult) {
         $response = array('status' => 'success', 'message' => 'Данные пользователя успешно удалены.');
         http_response_code(200);

@@ -36,6 +36,7 @@ class Login
 
             $_SESSION['login'] = $login;
             setcookie('login', $login, time() + 300, '/');
+            /* setcookie('email', $login, time() + 300, '/'); */
             setcookie('session_id', $sessionID, time() + 300, '/');
         } else {
             $_SESSION['login'] = $login;

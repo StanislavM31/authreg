@@ -1,11 +1,7 @@
 <?php
-session_start();
-var_dump($_SESSION);
-var_dump(session_id());
+
 
 require_once __DIR__ . '/../classes/CookieHandler.php';
-
-
 
 $cookieHandler = new CookieHandler();
 $username = $cookieHandler->getUsername();
@@ -17,20 +13,24 @@ $username = $cookieHandler->getUsername();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/form/style.css">
+    <link rel="stylesheet" href="/style.css">
     <title>Harry Potter Book List</title>
 
 </head>
 
 <body>
-    <div><a href='/'>На главную</a></div>
-    <br>
-    <?php
-    if ($username) {
-    ?>
-        <p>Вы зашли как, <?= $cookieHandler->getUsername() ?></p>
-        <h1>Harry Potter Book List</h1>
-        <div class="container">
+    <div class="container_info">
+        <div class="cookie_display">
+            <?php $cookieHandler->displayCookies(); ?>
+
+        </div>
+    </div>
+    <div class="container">
+        <?php
+        if ($username) {
+            ?>
+            <p>Вы зашли как, <?= $cookieHandler->getUsername() ?></p>
+            <h1>Harry Potter Books</h1>
             <ul>
                 <li>Harry Potter and the Philosopher's Stone</li>
                 <li>Harry Potter and the Chamber of Secrets</li>
@@ -40,13 +40,14 @@ $username = $cookieHandler->getUsername();
                 <li>Harry Potter and the Half-Blood Prince</li>
                 <li>Harry Potter and the Deathly Hallows</li>
             </ul>
-        </div>
-    <?php
-    } else {
-        echo "Извините, вы неавторизованный пользователь.";
-        echo "<br>";
-    }
-    ?>
+            <?php
+        } else {
+            echo "Извините, вы неавторизованный пользователь.";
+            echo "<br>";
+        }
+        ?>
+        <a href='/'>На главную</a>
+    </div>
 </body>
 
 </html>
