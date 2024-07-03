@@ -4,7 +4,7 @@ require_once __DIR__ . '/classes/Midleware.php';
 
 
 
-session_start();
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest') {
         try {
@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $response;
 
             if ($registrationResult === true) {
-                /* session_start(); */
+                session_start();
                 $_SESSION['login'] = $login;
                 setcookie('login', $login, time() + 300);
                 setcookie('session_id', session_id(), time() + 300);
