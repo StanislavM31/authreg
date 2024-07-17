@@ -1,0 +1,34 @@
+[Wed Jul 10 13:34:33.059210 2024] [mpm_winnt:notice] [pid 5008:tid 424] AH00455: Apache/2.4.59 (Win64) PHP/8.3.7 configured -- resuming normal operations
+[Wed Jul 10 13:34:33.059210 2024] [mpm_winnt:notice] [pid 5008:tid 424] AH00456: Apache Lounge VS17 Server built: Apr  4 2024 15:03:17
+[Wed Jul 10 13:34:33.059210 2024] [core:notice] [pid 5008:tid 424] AH00094: Command line: 'C:\\Apache24\\bin\\httpd.exe -d C:/Apache24'
+[Wed Jul 10 13:34:33.065207 2024] [mpm_winnt:notice] [pid 5008:tid 424] AH00418: Parent: Created child process 9008
+[Wed Jul 10 13:34:34.177858 2024] [mpm_winnt:notice] [pid 9008:tid 436] AH00354: Child: Starting 64 worker threads.
+[Wed Jul 10 13:34:37.179236 2024] [mpm_winnt:notice] [pid 5008:tid 424] AH00428: Parent: child process 9008 exited with status 1 -- Restarting.
+[Wed Jul 10 13:34:37.248194 2024] [mpm_winnt:notice] [pid 5008:tid 424] AH00455: Apache/2.4.59 (Win64) PHP/8.3.7 configured -- resuming normal operations
+[Wed Jul 10 13:34:37.248194 2024] [mpm_winnt:notice] [pid 5008:tid 424] AH00456: Apache Lounge VS17 Server built: Apr  4 2024 15:03:17
+[Wed Jul 10 13:34:37.248194 2024] [core:notice] [pid 5008:tid 424] AH00094: Command line: 'C:\\Apache24\\bin\\httpd.exe -d C:/Apache24'
+[Wed Jul 10 13:34:37.252191 2024] [mpm_winnt:notice] [pid 5008:tid 424] AH00418: Parent: Created child process 15124
+[Wed Jul 10 13:34:38.221596 2024] [mpm_winnt:notice] [pid 15124:tid 424] AH00354: Child: Starting 64 worker threads.
+[Wed Jul 10 13:34:58.851925 2024] [mpm_winnt:notice] [pid 5008:tid 424] AH00428: Parent: child process 15124 exited with status 1 -- Restarting.
+[Wed Jul 10 13:34:58.908642 2024] [mpm_winnt:notice] [pid 5008:tid 424] AH00455: Apache/2.4.59 (Win64) PHP/8.3.7 configured -- resuming normal operations
+[Wed Jul 10 13:34:58.908642 2024] [mpm_winnt:notice] [pid 5008:tid 424] AH00456: Apache Lounge VS17 Server built: Apr  4 2024 15:03:17
+[Wed Jul 10 13:34:58.908642 2024] [core:notice] [pid 5008:tid 424] AH00094: Command line: 'C:\\Apache24\\bin\\httpd.exe -d C:/Apache24'
+[Wed Jul 10 13:34:58.912639 2024] [mpm_winnt:notice] [pid 5008:tid 424] AH00418: Parent: Created child process 7876
+[Wed Jul 10 13:34:59.699718 2024] [mpm_winnt:notice] [pid 7876:tid 444] AH00354: Child: Starting 64 worker threads.
+[Wed Jul 10 13:35:04.589105 2024] [mpm_winnt:notice] [pid 5008:tid 424] AH00422: Parent: Received shutdown signal -- Shutting down the server.
+[Wed Jul 10 13:35:06.605073 2024] [mpm_winnt:notice] [pid 7876:tid 444] AH00364: Child: All worker threads have exited.
+[Wed Jul 10 13:35:06.629686 2024] [mpm_winnt:notice] [pid 5008:tid 424] AH00430: Parent: Child process 7876 exited successfully.
+[Fri Jul 12 00:46:05.908811 2024] [mpm_winnt:notice] [pid 3292:tid 404] AH00455: Apache/2.4.59 (Win64) PHP/8.3.7 configured -- resuming normal operations
+[Fri Jul 12 00:46:05.929045 2024] [mpm_winnt:notice] [pid 3292:tid 404] AH00456: Apache Lounge VS17 Server built: Apr  4 2024 15:03:17
+[Fri Jul 12 00:46:05.929095 2024] [core:notice] [pid 3292:tid 404] AH00094: Command line: 'C:\\Apache24\\bin\\httpd.exe -d C:/Apache24'
+[Fri Jul 12 00:46:05.931206 2024] [mpm_winnt:notice] [pid 3292:tid 404] AH00418: Parent: Created child process 4380
+[Fri Jul 12 00:46:09.050545 2024] [mpm_winnt:notice] [pid 4380:tid 420] AH00354: Child: Starting 64 worker threads.
+The 'Apache2.4' service is restarting.
+The 'Apache2.4' service has restarted.
+winnt:notice] [pid 3292:tid 404] AH00424: Parent: Received restart signal -- Restarting the server.
+[Wed Jul 17 22:56:20.083253 2024] [mpm_winnt:notice] [pid 3292:tid 404] AH00455: Apache/2.4.59 (Win64) PHP/8.3.7 configured -- resuming normal operations
+[Wed Jul 17 22:56:20.083253 2024] [mpm_winnt:notice] [pid 3292:tid 404] AH00456: Apache Lounge VS17 Server built: Apr  4 2024 15:03:17
+[Wed Jul 17 22:56:20.083253 2024] [core:notice] [pid 3292:tid 404] AH00094: Command line: 'C:\\Apache24\\bin\\httpd.exe -d C:/Apache24'
+[Wed Jul 17 22:56:20.090260 2024] [mpm_winnt:notice] [pid 3292:tid 404] AH00418: Parent: Created child process 15276
+[Wed Jul 17 22:56:21.195310 2024] [mpm_winnt:notice] [pid 15276:tid 432] AH00354: Child: Starting 64 worker threads.
+[Wed Jul 17 22:56:21.999934 2024] [mpm_winnt:notice] [pid 4380:tid 420] AH00364: Child: All worker threads have exited.

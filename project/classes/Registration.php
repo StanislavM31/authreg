@@ -32,14 +32,26 @@ class Registration
         if ($userDbHandler->getUserByEmail($this->email)) {
             return 'Пользователь с таким email уже зарегистрирован';
         }
-        if (strlen($this->password) < 3) {
-            return 'Пароль должен быть не менее 3 символов';
+        if ($userDbHandler->getUserByUsername($this->login)) {
+            return 'Пользователь с таким именем уже зарегистрирован';
+        }
+        if (!preg_match('/^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*(),.?":{}|<>]).{6,}$/', $this->password)) {
+            return 'Пароль должен содержать не менее 6 символов, включая как минимум одну цифру, одну букву и один специальный символ.';
         }
         if (empty($this->login) || empty($this->password) || empty($this->confirmPassword) || empty($this->email)) {
             return 'Все поля должны быть заполнены';
         }
         if (trim($this->login) === '' || trim($this->password) === '' || trim($this->confirmPassword) === '' || trim($this->email) === '') {
             return 'Не используйте пробелы для заполнения полей';
+        }
+        if (strpos($this->password, ' ') !== false) {
+            return 'Пароль не должен содержать пробелы';
+        }
+        if (strpos($this->email, '.') === false && strpos($this->email, '@') !== false) {
+            return 'Адрес электронной почты должен содержать точку в доменной части';
+        }
+        if (!preg_match('/\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b/', $this->email)) {
+            return 'Адрес электронной почты должен быть в формате admin@mail.ru';
         }
 
         $crypto = new Crypto();

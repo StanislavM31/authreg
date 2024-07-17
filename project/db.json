@@ -11,7 +11,7 @@
         "password": "dac315df93a806eb1882777e454c3214",
         "email": "admin@gmail.ru",
         "session_id": "p7rkuljt4eaivl8aqp5g5vg7on",
-        "last_visited": "2024-07-03 06:42:16"
+        "last_visited": "2024-07-17 22:57:53"
     },
     {
         "login": "123",
@@ -19,5 +19,12 @@
         "email": "123@mail.ru",
         "session_id": "f703358217325d0e42c77a7cfc227c70",
         "last_visited": "2024-07-03 15:16:18"
+    },
+    {
+        "login": "admin+",
+        "password": "19cadd8e99f7bf3d0676c9ce9cfa6c55",
+        "email": "123456789@mail.ru",
+        "session_id": "64f056c05b8ad2427e51e54614f1fceb",
+        "last_visited": "2024-07-17 23:50:30"
     }
 ]
