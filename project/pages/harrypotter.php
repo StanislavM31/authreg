@@ -2,9 +2,12 @@
 
 
 require_once __DIR__ . '/../classes/CookieHandler.php';
+require_once __DIR__ . '/../classes/UserDbHandler.php';
 
 $cookieHandler = new CookieHandler();
-$username = $cookieHandler->getUsername();
+$loginFromCookie = $cookieHandler->getUsername();
+$userDbHandler = new UserDbHandler();
+$userName = $userDbHandler->getUserNameByLogin($loginFromCookie);
 ?>
 
 <!DOCTYPE html>
@@ -27,9 +30,9 @@ $username = $cookieHandler->getUsername();
     </div>
     <div class="container">
         <?php
-        if ($username) {
+        if ($loginFromCookie) {
             ?>
-            <p>Вы зашли как, <?= $cookieHandler->getUsername() ?></p>
+            <p>Вы зашли как, <?= $userName ?></p>
             <h1>Harry Potter Books</h1>
             <ul>
                 <li>Harry Potter and the Philosopher's Stone</li>

@@ -11,6 +11,7 @@ class Registration
     private $password;
     private $confirmPassword;
     private $email;
+    private $name;
     private $session_id;
 
     public function __construct($login, $password, $confirmPassword, $email, $name, $session_id)
@@ -36,16 +37,16 @@ class Registration
         if ($userDbHandler->getUserByUsername($this->login)) {
             return 'Пользователь с таким именем уже зарегистрирован';
         }
-/*         if (!preg_match('/^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*(),.?":{}|<>]).{6,}$/', $this->password)) {
+        if (!preg_match('/^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*(),.?":{}|<>]).{6,}$/', $this->password)) {
             return 'Пароль должен содержать не менее 6 символов, включая как минимум одну цифру, одну букву и один специальный символ.';
-        } */
+        }
         if (strpos($this->password, ' ') !== false) {
             return 'Пароль не должен содержать пробелы';
         }
         if (empty($this->login) || empty($this->password) || empty($this->confirmPassword) || empty($this->email)) {
             return 'Все поля должны быть заполнены';
         }
-        if (trim($this->login) === '' || trim($this->password) === '' || trim($this->confirmPassword) === '' || trim($this->email) === '') {
+        if (trim($this->login) === '' || trim($this->password) === '' || trim($this->confirmPassword) === '' || trim($this->email) === ''  || trim($this->name) === '' ) {
             return 'Не используйте пробелы для заполнения полей';
         }
         if (strpos($this->password, ' ') !== false) {
@@ -56,6 +57,12 @@ class Registration
         }
         if (!preg_match('/\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b/', $this->email)) {
             return 'Адрес электронной почты должен быть в формате admin@mail.ru';
+        }
+        if (strpos($this->name, ' ') !== false) {
+            return 'имя не должно содержать пробелы';
+        }
+        if (strlen($this->name) < 2 || !preg_match('/^[a-zA-Zа-яА-Я]+$/u', $this->name)) {
+            return 'имя должно содержать минимум 2 символа и только буквы';
         }
 
         $crypto = new Crypto();

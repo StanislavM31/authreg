@@ -14,7 +14,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $email = $_POST['email'];
             $name = $_POST['name'];
             $session_id = session_id();
-
             $registration = new Registration($login, $password, $confirmPassword, $email, $name, $session_id);
             $registrationResult = $registration->register();
 

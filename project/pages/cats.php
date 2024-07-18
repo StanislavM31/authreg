@@ -2,12 +2,14 @@
 
 
 require_once __DIR__ . '/../classes/CookieHandler.php';
+require_once __DIR__ . '/../classes/UserDbHandler.php';
 
 $cookieHandler = new CookieHandler();
-$username = $cookieHandler->getUsername();
+$loginFromCookie = $cookieHandler->getUsername();
+$userDbHandler = new UserDbHandler();
+$userName = $userDbHandler->getUserNameByLogin($loginFromCookie);
+
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="ru">
@@ -29,9 +31,9 @@ $username = $cookieHandler->getUsername();
     </div>
 
     <div class="container">
-        <?php if ($username) { ?>
+        <?php if ($loginFromCookie) { ?>
             <div>
-                <p>Вы зашли как, <?= $cookieHandler->getUsername() ?></p>
+                <p>Вы зашли как, <?= $userName ?></p>
             </div>
             <h1>Виды кошек</h1>
             <ul>
