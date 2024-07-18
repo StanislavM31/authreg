@@ -6,6 +6,7 @@ try {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest') {
             $login = $_POST['login'];
+/*             $name = $_POST['name']; */
             $password = $_POST['password'];
             $loginObject = new Login();
             $response = $loginObject->authenticateUser($login, $password);

@@ -22,6 +22,9 @@
             <label for="email">Email</label>
             <input type="email" id="email" name="email" placeholder="Email" required><br>
             
+            <label for="name">Имя</label>
+            <input type="text" id="name" name="name" placeholder="name" required><br>
+
             <button type="submit">Зарегистрироваться</button>
         </form>
         <p>Уже зарегистрированы?

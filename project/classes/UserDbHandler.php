@@ -68,7 +68,7 @@ class userDbHandler
         }
     }
 
-    public function createUser($login, $hashedPassword, $email, $session_id)
+    public function createUser($login, $hashedPassword, $email, $name, $session_id)
     {
         date_default_timezone_set('Europe/Moscow');
         $data = file_get_contents($this->dbJsonPath);
@@ -80,6 +80,7 @@ class userDbHandler
             'login' => $login,
             'password' => $hashedPassword,
             'email' => $email,
+            'name' => $name,
             'session_id' => $session_id,
             'last_visited' => date('Y-m-d H:i:s'),
 

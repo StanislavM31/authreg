@@ -12,9 +12,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $password = $_POST['password'];
             $confirmPassword = $_POST['confirm_password'];
             $email = $_POST['email'];
+            $name = $_POST['name'];
             $session_id = session_id();
 
-            $registration = new Registration($login, $password, $confirmPassword, $email, $session_id);
+            $registration = new Registration($login, $password, $confirmPassword, $email, $name, $session_id);
             $registrationResult = $registration->register();
 
             if ($registrationResult === true) {

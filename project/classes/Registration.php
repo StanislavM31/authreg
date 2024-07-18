@@ -13,12 +13,13 @@ class Registration
     private $email;
     private $session_id;
 
-    public function __construct($login, $password, $confirmPassword, $email, $session_id)
+    public function __construct($login, $password, $confirmPassword, $email, $name, $session_id)
     {
         $this->login = $login;
         $this->password = $password;
         $this->confirmPassword = $confirmPassword;
         $this->email = $email;
+        $this->name = $name;
         $this->session_id = $session_id;
     }
 
@@ -35,8 +36,11 @@ class Registration
         if ($userDbHandler->getUserByUsername($this->login)) {
             return 'Пользователь с таким именем уже зарегистрирован';
         }
-        if (!preg_match('/^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*(),.?":{}|<>]).{6,}$/', $this->password)) {
+/*         if (!preg_match('/^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*(),.?":{}|<>]).{6,}$/', $this->password)) {
             return 'Пароль должен содержать не менее 6 символов, включая как минимум одну цифру, одну букву и один специальный символ.';
+        } */
+        if (strpos($this->password, ' ') !== false) {
+            return 'Пароль не должен содержать пробелы';
         }
         if (empty($this->login) || empty($this->password) || empty($this->confirmPassword) || empty($this->email)) {
             return 'Все поля должны быть заполнены';
@@ -56,7 +60,7 @@ class Registration
 
         $crypto = new Crypto();
 
-        $userRegisterResult = $userDbHandler->createUser($this->login, $crypto->hashPassword($this->password), $this->email, $this->session_id);
+        $userRegisterResult = $userDbHandler->createUser($this->login, $crypto->hashPassword($this->password), $this->email, $this->name, $this->session_id);
 
 
         return $userRegisterResult;

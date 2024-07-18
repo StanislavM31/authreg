@@ -4,7 +4,7 @@
         "password": "2e0aca891f2a8aedf265edf533a6d9a8",
         "email": "minkostas@gmail.com",
         "session_id": "46vdsa6euupcl4fn29dneskmf0",
-        "last_visited": "2024-07-03 12:33:28"
+        "last_visited": "2024-07-19 00:06:18"
     },
     {
         "login": "admin",
@@ -26,5 +26,13 @@
         "email": "123456789@mail.ru",
         "session_id": "64f056c05b8ad2427e51e54614f1fceb",
         "last_visited": "2024-07-17 23:50:30"
+    },
+    {
+        "login": "testuser",
+        "password": "2e0aca891f2a8aedf265edf533a6d9a8",
+        "email": "12345@mail.ru",
+        "name": "StanislavTestUser",
+        "session_id": "gj90oprkgfpeund6bio1ku6nb0",
+        "last_visited": "2024-07-19 00:13:21"
     }
 ]
