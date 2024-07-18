@@ -27,7 +27,7 @@ document.getElementById("registrationForm").addEventListener("submit", function(
         window.location.href = "/";
     })
     .catch(function(error) {
-        console.log("error: ", error);
+        /* console.log("error: ", error); */
         alert( error);
     });
 });

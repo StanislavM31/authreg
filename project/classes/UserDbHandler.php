@@ -25,6 +25,21 @@ class userDbHandler
         }
         return false;
     }
+    
+    public function getUserNameByLogin($login)
+    {
+        $allUsers = $this->getAllUsers();
+        $usersCount = count($allUsers);
+    
+        for ($i = 0; $i < $usersCount; $i++) {
+            $tempUser = $allUsers[$i];
+    
+            if ($tempUser['login'] === $login) {
+                return $tempUser['name'];
+            }
+        }
+        return 'аноним';
+    }
 
     private function checkPassword($login, $hashedPassword)
     {

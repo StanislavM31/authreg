@@ -1,5 +1,7 @@
 <?php
 
+
+
 class CookieHandler
 {
     private $login;
@@ -16,7 +18,8 @@ class CookieHandler
     public function displayCookies()
     {
         if ($this->login !== null /* && $this->password !== null && $this->sessionId !== null */) {
-            echo 'Cookie username: ' . $this->login . '<br>';
+
+            echo 'Cookie login: ' . $this->login . '<br>';
             /* echo 'Cookie password: ' . $this->password . '<br>'; */
             echo 'Cookie sessionId: ' . $this->sessionId . '<br>';
             echo 'Request Method: ' . $_SERVER['REQUEST_METHOD'] . '<br>';

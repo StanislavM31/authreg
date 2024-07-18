@@ -2,10 +2,12 @@
 
 require_once __DIR__ . '/classes/CookieHandler.php';
 require_once __DIR__ . '/classes/Login.php';
-
+require_once __DIR__ . '/classes/UserDbHandler.php';
 
 $cookieHandler = new CookieHandler();
-
+$loginFromCookie = $cookieHandler->getUsername();
+$userDbHandler = new UserDbHandler();
+$userName = $userDbHandler->getUserNameByLogin($loginFromCookie);
 ?>
 
 <html>
@@ -23,11 +25,11 @@ $cookieHandler = new CookieHandler();
         </div>
     </div>
 
-    <?php if ($cookieHandler->getUsername() !== null): ?>
+    <?php if ($loginFromCookie !== null): ?>
         <div class="autorized_form">
             <form id="logoutForm" method="post">
                 <div class="autorized_user">
-                    Добро пожаловать, <?= $cookieHandler->getUsername() ?>
+                    Добро пожаловать, <?= $userName ?>
                 </div>
 
                 <ul>
